@@ -4,7 +4,6 @@
 
 # Return a list of the target indices of nums after sorting nums in non-decreasing order. If there are no target indices, return an empty list. The returned list must be sorted in increasing order.
 
- 
 
 # Example 1:
 
@@ -24,7 +23,7 @@
 # Output: [4]
 # Explanation: After sorting, nums is [1,2,2,3,5].
 # The index where nums[i] == 5 is 4.
- 
+
 
 # Constraints:
 
@@ -34,42 +33,42 @@
 
 class Solution(object):
 
-    def find_start(self, nums, target): 
-      if nums[0] == target: 
-        return 0 
+    def find_start(self, nums, target):
+        if nums[0] == target:
+            return 0
 
-      left, right = 0, len(nums) -1 
+        left, right = 0, len(nums) - 1
 
-      while left <= right: 
-        mid = int(left + (right - left)/2)
-        if nums[mid] == target and nums[mid-1] < target: 
-          return mid 
+        while left <= right:
+            mid = int(left + (right - left)/2)
+            if nums[mid] == target and nums[mid-1] < target:
+                return mid
 
-        elif nums[mid] < target:
-          left = mid + 1 
+            elif nums[mid] < target:
+                left = mid + 1
 
-        else 
-          right = mid - 1 
+            else:
+                right = mid - 1
 
-      return -1 
+        return -1
 
-    def find_end(self, nums, target): 
-      if nums[-1] == target: 
-        return len(nums) -1 
+    def find_end(self, nums, target):
+        if nums[-1] == target:
+            return len(nums) - 1
 
-      left, right = 0, len(nums) -1 
+        left, right = 0, len(nums) - 1
 
-      while left <= right: 
-        mid = int(left + (right - left)/2)
-        if nums[mid] == target and nums[mid + 1] > target: 
-          return mid 
+        while left <= right:
+            mid = int(left + (right - left)/2)
+            if nums[mid] == target and nums[mid + 1] > target:
+                return mid
 
-        elif nums[mid] > target: 
-          right = mid -1 
-        else: 
-          left = mid + 1 
+            elif nums[mid] > target:
+                right = mid - 1
+            else:
+                left = mid + 1
 
-      return -1 
+        return -1
 
     def targetIndices(self, nums, target):
         """
@@ -82,9 +81,7 @@ class Solution(object):
         start = self.find_start(nums, target)
         end = self.find_end(nums, target)
 
-        if start == -1 or end == -1: 
-          return -1 
+        if start == -1 or end == -1:
+            return -1
 
         return list(range(start, end+1))
-
-         
